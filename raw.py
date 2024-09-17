@@ -1,7 +1,5 @@
 from pymongo import MongoClient
 
-# connection_string = "mongodb://user:123@localhost:27017/" #?authSource=admin
-
 connection_string = "mongodb://user:123@localhost:27017/?authSource=teste_db"
 
 client = MongoClient(connection_string)
