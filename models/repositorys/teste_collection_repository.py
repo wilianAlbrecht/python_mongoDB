@@ -15,3 +15,15 @@ class Teste_collection_repository:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.insert_many(list_of_documents)
         return list_of_documents
+    
+    def select_many(self, filtro: Dict) -> List[Dict]:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find(filtro, {"address" : 0, "_id": 0})
+        return data
+    
+    def select_if_property_exist(self, filtro) -> List[Dict]:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find({filtro: { "$exists": True}}, {"address" : 0, "_id": 0})
+        return data
+    
+
